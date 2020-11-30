@@ -7,7 +7,7 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Second Hand Book</h1>
     <p>
         @if (SignInManager.IsSignedIn(User))
         {
@@ -16,5 +16,23 @@
            <span>User Role - </span> @output
         }
     </p>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class=" container">
+        <div class="jumbotron">
+            <div class="row">
+                <div class=" col-sm-6">
+                    <b>
+                        Buy Second hand books, used books, old books online
+                    </b>
+                        <p>The largest and only online marketplace for second hand books.
+                        Apart from existing stock, we arrange/source used books which are not available with us as well. 
+                        Our motive is to serve you with any book which you request us.
+                    </p>
+                </div>
+                <div class="col-sm-6">
+                    <img src="~/Images/Front.jpg" height="250"  />
+                </div>
+            </div>
+        </div>
+    </div>
+   
 </div>
