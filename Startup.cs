@@ -12,6 +12,8 @@ using SecondHandBook.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SecondHandBook.Services;
+using SecondHandBook.Models;
 
 namespace SecondHandBook
 {
@@ -27,12 +29,20 @@ namespace SecondHandBook
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<BooksContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("BookDB")));
+
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddScoped<IBookADSRepository, EFBookADSRepository>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
