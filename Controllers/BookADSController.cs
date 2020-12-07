@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -53,8 +54,24 @@ namespace SecondHandBook.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Title,Description,Author,ISBN,College,Rate,ImagePath")] BookADS bookADS)
+        public async Task<IActionResult> Create(BookADS bookADS)
         {
+            var image = bookADS.ImageFile;
+
+            if (image != null) {
+                string ImageName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+
+                //Get url To Save
+                string SavePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", ImageName);
+
+                using (var stream = new FileStream(SavePath, FileMode.Create))
+                {
+                    image.CopyTo(stream);
+                }
+                bookADS.ImagePath = ImageName;
+            }
+            bookADS.ImageFile = null;
+
             if (ModelState.IsValid)
             {
                 _context.Add(bookADS);
