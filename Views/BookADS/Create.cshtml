@@ -5,63 +5,72 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
 
-<h4>BookADS</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="panel panel-success">
+    <div class="panel-heading text-center"><h4 style="color:orange">Add a new Advertisement</h4></div>
+    <div class="panel-body">
         <form asp-action="Create" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly"  class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Author" class="control-label"></label>
-                <input asp-for="Author" class="form-control" />
-                <span asp-validation-for="Author" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ISBN" class="control-label"></label>
-                <input asp-for="ISBN" class="form-control" />
-                <span asp-validation-for="ISBN" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="College" class="control-label"></label>
-                <input asp-for="College" class="form-control" />
-                <span asp-validation-for="College" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rate" class="control-label"></label>
-                <input asp-for="Rate" class="form-control" />
-                <span asp-validation-for="Rate" class="text-danger"></span>
-            </div>
-            @*<div class="form-group">
-                <label asp-for="ImagePath" class="control-label"></label>
-                <input asp-for="ImagePath" class="form-control" />
-                <span asp-validation-for="ImagePath" class="text-danger"></span>
-            </div>*@
-            
-            <div class="form-group">
-                <label asp-for="ImageFile" class="control-label"></label>
-                <input asp-for="ImageFile" class="form-control" />
-                <span asp-validation-for="ImageFile" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <table class="table table-sm table-striped table-bordered">
+                <tr>
+                    <td><label asp-for="Title" class="control-label"></label></td>
+                    <td>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Description" class="control-label"></label></td>
+                    <td>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Author" class="control-label"></label></td>
+                    <td>
+                        <input asp-for="Author" class="form-control" />
+                        <span asp-validation-for="Author" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="ISBN" class="control-label"></label></td>
+                    <td>
+                        <input asp-for="ISBN" class="form-control" />
+                        <span asp-validation-for="ISBN" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="College" class="control-label"></label></td>
+                    <td>
+                        <input asp-for="College" class="form-control" />
+                        <span asp-validation-for="College" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Rate" class="control-label"></label></td>
+                    <td>
+                        <input asp-for="Rate" class="form-control" />
+                        <span asp-validation-for="Rate" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="ImageFile" class="control-label"></label></td>
+                    <td>
+                        <input asp-for="ImageFile" class="form-control" />
+                        <span asp-validation-for="ImageFile" class="text-danger"></span>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="form-group text-center">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
+<div class="text-center">
     <a asp-action="Index">Back to List</a>
 </div>
 
