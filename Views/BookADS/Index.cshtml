@@ -5,67 +5,71 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagePath)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Author)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ISBN)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.College)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Rate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <img src="/img/@item.ImagePath" width="100px" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ISBN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.College)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rate)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a>
-                <!---| <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>-->
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="panel panel-success">
+    <div class="panel-heading text-center"><h4 style="color:darkslateblue">Ads List</h4></div>
+    <div class="text-center">
+        <a asp-action="Create">Add New Advertisement</a>
+    </div>
+    <div class="panel-body">
+        <table class="table class="table table-sm table-bordered"">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ImagePath)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Author)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ISBN)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.College)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Rate)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="/img/@item.ImagePath" width="100px" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Author)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ISBN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.College)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Rate)
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                            <!---| <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>-->
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>

@@ -5,62 +5,46 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>BookADS</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-12">
-            <img width="100%" src="/img/@Model.ImagePath" alt="Alternate Text" />
+<div class="panel panel-success">
+    <div class="panel-heading text-center"><h4 style="color:blueviolet">Book Details</h4></div>
+    <div class="panel-body">
+        <div class="row" >
+            <div class="column" >
+                <img width="200" height="250" src="/img/@Model.ImagePath" alt="Alternate Text" style=" margin-left:15%;margin-top:5%" />
+            </div>      
+       
+        <div class="column">
+            <table class="table table-sm table-bordered" style="margin-left:45%;margin-top:5%">
+                <tr>
+                    <td><b>@Html.DisplayNameFor(model => model.Title)</b></td>
+                    <td> @Html.DisplayFor(model => model.Title)</td>
+                </tr>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(model => model.Description)</b></td>
+                    <td>@Html.DisplayFor(model => model.Description)</td>
+                </tr>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(model => model.Author)</b></td>
+                    <td>@Html.DisplayFor(model => model.Author)</td>
+                </tr>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(model => model.ISBN)</b></td>
+                    <td>@Html.DisplayFor(model => model.ISBN)</td>
+                </tr>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(model => model.College)</b></td>
+                    <td>@Html.DisplayFor(model => model.College)</td>
+                </tr>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(model => model.Rate)</b></td>
+                    <td>@Html.DisplayFor(model => model.Rate)</td>
+                </tr>
+            </table>
         </div>
     </div>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Author)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ISBN)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ISBN)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.College)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.College)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Rate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Rate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImagePath)
-        </dd>
-    </dl>
-</div>
-<div>
+</div> 
+    </div>
+<div class="text-center">
     @*<a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |*@
     <a asp-action="Index">Back to List</a>
 </div>
