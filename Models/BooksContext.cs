@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SecondHandBook.Models;
 
 namespace SecondHandBook.Models
 {
@@ -11,5 +12,7 @@ namespace SecondHandBook.Models
         public BooksContext(DbContextOptions<BooksContext> options) : base(options) { }
 
         public DbSet<BookADS> bookADs { get; set; }
+
+        public DbSet<SecondHandBook.Models.UserProfileModel> UserProfileModel { get; set; }
     }
 }

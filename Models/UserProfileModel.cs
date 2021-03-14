@@ -11,6 +11,8 @@ namespace SecondHandBook.Models
 {
     public class UserProfileModel
     {
+        [Key]
+        public int ID { get; set; }
         [NotMappedAttribute]
         public IFormFile UserImage { get; set; }
 
