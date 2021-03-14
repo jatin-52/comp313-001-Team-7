@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -24,15 +25,15 @@ namespace SecondHandBook
                 using (var scope = host.Services.CreateScope())
                 {
                     var serviceprovide = scope.ServiceProvider;
-                    try
-                    {
-                        var roleManager = serviceprovide.GetRequiredService<RoleManager<IdentityRole>>();
-                        DbInitializer.Seed(roleManager);
-                    }
-                    catch (Exception e)
-                    {
+                    var roleManager = serviceprovide.GetRequiredService<RoleManager<IdentityRole>>();
+                    DbInitializer.Seed(roleManager);
+                }
 
-                    }
+                // adding img folder if not present
+                string ImgSavePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img");
+                if (!Directory.Exists(ImgSavePath))
+                {
+                    Directory.CreateDirectory(ImgSavePath);
                 }
             }
             catch (Exception e)
