@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<SecondHandBook.Models.BookADS>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
 
 @{
     ViewData["Title"] = "Index";
@@ -7,11 +9,15 @@
 
 <div class="panel panel-success">
     <div class="panel-heading text-center"><h4 style="color:darkslateblue">Ads List</h4></div>
-    <div class="text-center">
-        <a asp-action="Create">Add New Advertisement</a>
-    </div>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <div class="text-center">
+            <a asp-action="Create">Add New Advertisement</a>
+        </div>
+    }
+
     <div class="panel-body">
-        <table class="table class="table table-sm table-bordered"">
+        <table class="table class=" table table-sm table-bordered"">
             <thead>
                 <tr>
                     <th>
@@ -68,8 +74,8 @@
                             <!---| <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>-->
                         </td>
                     </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+                }
+            </tbody>
+        </table>
     </div>
+</div>
