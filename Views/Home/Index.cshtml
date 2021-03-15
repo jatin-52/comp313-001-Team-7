@@ -13,7 +13,7 @@
         {
             var currentUser = UserManager.GetUserAsync(@User).GetAwaiter().GetResult();
             var output = UserManager.GetRolesAsync(currentUser).GetAwaiter().GetResult().FirstOrDefault();
-           <span>User Role - </span> @output
+            @output
         }
     </p>
     <div class=" container">

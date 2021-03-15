@@ -24,6 +24,41 @@ namespace SecondHandBook
             return View(await _context.UserProfileModel.ToListAsync());
         }
 
+        public async Task<IActionResult> AccessUserProfile(string userName)
+        {
+            
+            var name = userName.ToCharArray();
+            string newname = "";
+            int index = 0;
+            for(int i = 0; i<= userName.Length; i++)
+            {
+                if (name[i] == '@')
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            for(int i=0; i<index; i++)
+            {
+                newname = newname + name[i];                
+            }
+
+            if (userName == null)
+            {
+                return NotFound();
+            }
+
+            var userProfileModel = await _context.UserProfileModel
+                .FirstOrDefaultAsync(m => m.FirstName == newname);
+            if (userProfileModel == null)
+            {
+                return NotFound();
+            }
+
+            return View("Details",userProfileModel);
+        }
+
         // GET: UserProfile/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -59,7 +94,7 @@ namespace SecondHandBook
             {
                 _context.Add(userProfileModel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(SecondHandBook.Controllers.HomeController.Index));
             }
             return View(userProfileModel);
         }

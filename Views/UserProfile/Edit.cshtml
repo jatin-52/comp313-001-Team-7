@@ -14,63 +14,63 @@
             <input type="hidden" asp-for="ID" />
             <table class="table table-sm table-bordered">
                 <tr>
-                    <td><label asp-for="FirstName" class="control-label"></label></td>
+                    <td><b><label asp-for="FirstName" class="control-label"></label></b></td>
                     <td>
                         <input asp-for="FirstName" class="form-control" />
                         <span asp-validation-for="FirstName" class="text-danger"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label asp-for="LastName" class="control-label"></label></td>
+                    <td><b><label asp-for="LastName" class="control-label"></label></b></td>
                     <td>
                         <input asp-for="LastName" class="form-control" />
                         <span asp-validation-for="LastName" class="text-danger"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label asp-for="DateOfBirth" class="control-label"></label></td>
+                    <td><b><label asp-for="DateOfBirth" class="control-label"></label></b></td>
                     <td>
                         <input asp-for="DateOfBirth" class="form-control" />
                         <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label asp-for="Mobile" class="control-label"></label></td>
+                    <td><b><label asp-for="Mobile" class="control-label"></label></b></td>
                     <td>
                         <input asp-for="Mobile" class="form-control" />
                         <span asp-validation-for="Mobile" class="text-danger"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label asp-for="Address" class="control-label"></label></td>
+                    <td><b><label asp-for="Address" class="control-label"></label></b></td>
                     <td>
                         <input asp-for="Address" class="form-control" />
                         <span asp-validation-for="Address" class="text-danger"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label asp-for="City" class="control-label"></label></td>
+                    <td><b><label asp-for="City" class="control-label"></label></b></td>
                     <td>
                         <input asp-for="City" class="form-control" />
                         <span asp-validation-for="City" class="text-danger"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label asp-for="Province" class="control-label"></label></td>
+                    <td><b><label asp-for="Province" class="control-label"></label></b></td>
                     <td>
                         <input asp-for="Province" class="form-control" />
                         <span asp-validation-for="Province" class="text-danger"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label asp-for="Country" class="control-label"></label></td>
+                    <td><b><label asp-for="Country" class="control-label"></label></b></td>
                     <td>
                         <input asp-for="Country" class="form-control" />
                         <span asp-validation-for="Country" class="text-danger"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label asp-for="PostalCode" class="control-label"></label></td>
+                    <td><b><label asp-for="PostalCode" class="control-label"></label></b></td>
                     <td>
                         <input asp-for="PostalCode" class="form-control" />
                         <span asp-validation-for="PostalCode" class="text-danger"></span>
@@ -85,9 +85,7 @@
     </div>
 </div>
 
-<div class="text-center">
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
