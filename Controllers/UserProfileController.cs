@@ -94,7 +94,8 @@ namespace SecondHandBook
             {
                 _context.Add(userProfileModel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(SecondHandBook.Controllers.HomeController.Index));
+                return RedirectToAction(nameof(Create));
+                // return RedirectToAction(nameof(SecondHandBook.Controllers.HomeController.Index));
             }
             return View(userProfileModel);
         }
@@ -112,7 +113,8 @@ namespace SecondHandBook
             {
                 return NotFound();
             }
-            return View(userProfileModel);
+            return RedirectToAction(nameof(Create));
+            /*return View(userProfileModel);*/
         }
 
         // POST: UserProfile/Edit/5
