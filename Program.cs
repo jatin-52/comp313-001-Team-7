@@ -26,7 +26,8 @@ namespace SecondHandBook
                 {
                     var serviceprovide = scope.ServiceProvider;
                     var roleManager = serviceprovide.GetRequiredService<RoleManager<IdentityRole>>();
-                    DbInitializer.Seed(roleManager);
+                    var userManager = serviceprovide.GetRequiredService<UserManager<IdentityUser>>();
+                    DbInitializer.Seed(roleManager, userManager);
                 }
 
                 // adding img folder if not present

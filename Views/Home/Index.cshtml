@@ -23,23 +23,54 @@
                     <b>
                         Buy Second hand books, used books, old books online
                     </b>
-                        <p>The largest and only online marketplace for second hand books.
-                        Apart from existing stock, we arrange/source used books which are not available with us as well. 
+                    <p>
+                        The largest and only online marketplace for second hand books.
+                        Apart from existing stock, we arrange/source used books which are not available with us as well.
                         Our motive is to serve you with any book which you request us.
                     </p>
                 </div>
                 <div class="col-sm-6">
-                    <img src="~/Images/Front.jpg" height="250"  />
+                    <img src="~/Images/Front.jpg" height="250" />
                 </div>
             </div>
+            @*<div class="row">
+                <form id="form1">
+                    Id : <input type="text" name="Id" id="Id" />
+                    Name: <input type="text" name="Name" id="Name" />
+                    <input type="button" id="send" value="Send Post Data" />
+                </form>
+            </div>*@
         </div>
     </div>
-   
+
 </div>
+
+<script type="text/javascript">
+    <script>
+        $(function () {
+            $("#send").click(function () {
+                var personalInfo = { Id: $('#Id').val(), Name: $('#Name').val() };
+                $.ajax({
+                    url: 'http://localhost:50855/api/BookADSAPI/PostBookADS',
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    data: JSON.stringify(personalInfo),
+                    success: function (data, textStatus, xhr) {
+                        console.log(data);
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log('Error in Operation');
+                    }
+                });
+            });
+            })
+</script>
+
+</script>
 
 <style>
     body {
         background-color: darkkhaki;
     }
-
 </style>

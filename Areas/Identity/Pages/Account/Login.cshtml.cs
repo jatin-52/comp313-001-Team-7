@@ -83,6 +83,12 @@ namespace SecondHandBook.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    var user = await _userManager.FindByEmailAsync(Input.Email);
+                    var userRole = _userManager.GetRolesAsync(user).GetAwaiter().GetResult().FirstOrDefault();
+                    if (userRole == "Admin")
+                    {
+                        return Redirect("~/Admin");
+                    }
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

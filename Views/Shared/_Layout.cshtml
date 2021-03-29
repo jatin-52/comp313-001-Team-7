@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,8 +33,16 @@
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="BookADS" asp-action="Create">Create Ad</a>
                             </li>
+                            var currentUser = UserManager.GetUserAsync(@User).GetAwaiter().GetResult();
+                            var output = UserManager.GetRolesAsync(currentUser).GetAwaiter().GetResult().FirstOrDefault();
+                            @if (output == "Admin")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" asp-area="" asp-controller="Admin" asp-action="Index">Admin Panel</a>
+                                </li>
+                            }
                         }
-                        </ul>
+                    </ul>
                 </div>
             </div>
         </nav>
