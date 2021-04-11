@@ -6,63 +6,70 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SecondHandBook.VMs;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace SecondHandBook
 {
     [EnableCors]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class MobileLoginController : ControllerBase
     {
-        // GET: api/<MobileLoginController>
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+
+        public MobileLoginController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<ActionResult> Test()
         {
-            return new string[] { "value1", "value2" };
+            return Ok("success");
         }
 
-        // GET api/<MobileLoginController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<MobileLoginController>
         [HttpPost]
-        public void SignUp([FromBody] string value)
+        public async Task<ActionResult> SignUp(UserModel model)
         {
             if (ModelState.IsValid)
             {
-                // var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
-                // var result = await _userManager.CreateAsync(user, Input.Password);
-                /*if (result.Succeeded)
+                var user = new IdentityUser { UserName = model.Email, Email = model.Email };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
                 {
-                }*/
+                    return Ok(user.Id);
+                }
+                else
+                {
+                    return BadRequest(string.Join(",", result.Errors.Select(x => x.Description).ToList()));
+                }
             }
+            return BadRequest();
         }
 
-        // POST api/<MobileLoginController>
         [HttpPost]
-        public async Task<ActionResult<string>> Login([FromBody] string value)
+        public async Task<ActionResult> Login(UserModel model)
         {
-            return "Abcd";
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+                if (result.Succeeded)
+                {
+                    var user = await _userManager.FindByEmailAsync(model.Email);
+                    return Ok(user.Id);
+                }
+                else
+                {
+                    return BadRequest("Invalid UserName or Password");
+                }
+            }
+            return BadRequest();
         }
 
-        // PUT api/<MobileLoginController>/5
-        [HttpPut]
-        [Route("LoginPut")]
-        public string LoginPut([FromBody] string value) // 
-        {
-            return "My put request";
-        }
 
-        // DELETE api/<MobileLoginController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

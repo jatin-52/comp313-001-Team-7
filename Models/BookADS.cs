@@ -25,6 +25,7 @@ namespace SecondHandBook.Models
         public String College { get; set; }
         [Required]
         public int Rate { get; set; }
+        public Guid? UserId { get; set; }
 
         [DisplayName("Book Image")]
         public String ImagePath { get; set; }

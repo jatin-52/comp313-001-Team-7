@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -79,9 +81,18 @@ namespace SecondHandBook
         [HttpPost]
         public async Task<ActionResult<BookADS>> PostBookADS(BookADS bookADS)
         {
+            var image = bookADS.ImagePath;
+            if (image != null)
+            {
+                string imageName = Guid.NewGuid() + ".jpg";
+                string SavePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", imageName);
+                var imageString = Regex.Replace(image, @"^data:image\/[a-zA-Z]+;base64,", string.Empty);
+                byte[] imageBytes = Convert.FromBase64String(imageString);
+                System.IO.File.WriteAllBytes(SavePath, imageBytes);
+                bookADS.ImagePath = imageName;
+            }
             _context.bookADs.Add(bookADS);
             await _context.SaveChangesAsync();
-
             return CreatedAtAction("GetBookADS", new { id = bookADS.ID }, bookADS);
         }
 
