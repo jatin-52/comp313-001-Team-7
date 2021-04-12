@@ -1,0 +1,7 @@
+{
+  "name": "second-hand-book-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,17 @@
+<app-my-header [title]="'List Ads'"></app-my-header>
+
+<ion-content>
+    <ion-card *ngFor="let item of allAds" (click)="goToAdsDetails(item)">
+        <img [src]="'http://secondhandbook-dev.us-east-2.elasticbeanstalk.com/img/'+item.imagePath" />
+        <ion-card-header>
+          <ion-card-subtitle>{{ item.author }}</ion-card-subtitle>
+          <ion-card-title>{{ item.title }}</ion-card-title>
+          <ion-card-subtitle>${{ item.rate }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <p>College : {{ item.college }}</p>
+          <p>isbn : {{ item.isbn }}</p>
+          <p>description : {{ item.description }}</p>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

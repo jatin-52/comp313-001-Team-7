@@ -1,0 +1,28 @@
+/*.centerContainer {
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}*/
+
+/*.vertical-center {
+    .fixed-content,
+    .scroll-content {
+        display: flex;
+        align-items: center;
+
+        ion-list {
+            max-width: 300px; 
+            width:100%; 
+            margin: auto; 
+            text-align: center;
+        }
+    }
+}*/
+
+.height_100 {
+    height: 100%;
+    ion-list {
+        width: 100%;
+    }
+}

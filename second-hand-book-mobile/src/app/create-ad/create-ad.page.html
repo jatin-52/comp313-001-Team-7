@@ -1,0 +1,39 @@
+<app-my-header [title]="'Create Ad'"></app-my-header>
+
+<ion-content>
+    <form [formGroup]="createAd" (ngSubmit)="addAd()">
+        <ion-item>
+            <ion-label position="floating">Title</ion-label>
+            <ion-input formControlName="title"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Description</ion-label>
+            <ion-textarea formControlName="description"></ion-textarea>
+          </ion-item>
+        <ion-item>
+            <ion-label position="floating">Author</ion-label>
+            <ion-input formControlName="author"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">ISBN</ion-label>
+            <ion-input formControlName="isbn"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">College</ion-label>
+            <ion-input formControlName="college"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Rate</ion-label>
+            <ion-input formControlName="rate" type="number"></ion-input>
+        </ion-item>
+        <ion-row>
+            <ion-col>
+              Add File
+              <input type="file" name="upload" (change)="onFileChange($event)" />
+            </ion-col>
+        </ion-row>
+        <ion-button color="primary" type="submit" >
+            Create
+        </ion-button>
+    </form>
+</ion-content>

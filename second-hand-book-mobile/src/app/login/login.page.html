@@ -1,0 +1,25 @@
+<app-my-header [title]="'Login'"></app-my-header>
+
+<ion-content > <!-- padding class="vertical-center" --->
+    <ion-row class="height_100 ion-align-items-center ion-no-padding">
+        <ion-list>
+            <form [formGroup]="loginForm" ngSubmit="login()">
+                <ion-item >
+                    <ion-label position="floating">Email</ion-label>
+                    <ion-input required formControlName="email" type="text"></ion-input>
+                </ion-item>
+                <ion-item >
+                    <ion-label position="floating">Password</ion-label>
+                    <ion-input required formControlName="password" type="password"></ion-input>
+                </ion-item>
+                <p class="ion-align-items-center ion-text-center">
+                    <ion-button color="primary" [disabled]="!loginForm.valid" (click)="login()">Login</ion-button>
+                </p>
+                <p class="ion-align-items-center ion-text-center">
+                    <ion-button color="primary" [routerLink]="['/sign-up']">Sign Up Now</ion-button>
+                </p>
+            </form>
+        </ion-list>
+    </ion-row>
+</ion-content>
+  
