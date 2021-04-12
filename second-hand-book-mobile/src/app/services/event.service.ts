@@ -6,5 +6,9 @@ import { AdList } from '../Models/ad';
 })
 export class EventService {
   public ad: AdList;
+
+  public userEmail: string = '';
+  public userId: string = '';
+  
   constructor() { }
 }

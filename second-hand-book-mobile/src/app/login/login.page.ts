@@ -36,7 +36,8 @@ export class LoginPage implements OnInit {
     this.authServcie.Login(this.loginForm.get('email').value, this.loginForm.get('password').value).then((res) => {
       localStorage.setItem("userEmail", this.loginForm.get('email').value);
       localStorage.setItem("userId", res.data);
-      this.router.navigate(['/list-ads']);
+      // this.router.navigate(['/list-ads']);
+      window.location.href = '/list-ads';
     }, (err) => {
       console.assert(err);
       console.log("user not found");
